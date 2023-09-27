@@ -19,7 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.format.DateTimeFormatter;  
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.awt.Dimension;
 
@@ -35,16 +35,15 @@ public class window extends JFrame implements ActionListener {
 	private String email;
 	private String phone;
 	private String orderedItem;
-	private String userHome = System.getProperty("user.home");
+	private String userHomePath = System.getProperty("user.home");
 	JButton btnZatwierdz = new JButton();
 	JButton btnZapis = new JButton();
 	JButton btnLast = new JButton();
 	ImageIcon iconaccept = new ImageIcon(getClass().getClassLoader().getResource("accept.png"));
-	final JFileChooser fileChooser = new JFileChooser(userHome +"/Desktop");
-	
-	
+	final JFileChooser fileChooser = new JFileChooser(userHomePath + "/Desktop");
+
 	File fileFolder = new File("");
-	File file = new File(fileFolder.getAbsolutePath()+"/Zamówienia.txt");
+	File file = new File(fileFolder.getAbsolutePath() + "/Zamówienia.txt");
 
 	/**
 	 * Launch the application.
@@ -79,80 +78,80 @@ public class window extends JFrame implements ActionListener {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JPanel panel_4 = new JPanel();
 		contentPane.add(panel_4);
 		panel_4.setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		JPanel panel = new JPanel();
 		panel_4.add(panel);
 		panel.setBackground(Color.DARK_GRAY);
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		
+
 		JLabel lblNewLabel = new JLabel("Imię i nazwisko:");
 		lblNewLabel.setForeground(Color.WHITE);
 		panel.add(lblNewLabel);
-		
+
 		textField = new JTextField();
 		textField.setForeground(new Color(46, 46, 46));
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		panel.add(textField);
 		textField.setColumns(16);
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_4.add(panel_1);
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel_1.setBackground(Color.DARK_GRAY);
 		panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		
+
 		JLabel lblAdresEmail = new JLabel("Adres e-mail:");
 		lblAdresEmail.setForeground(Color.WHITE);
 		panel_1.add(lblAdresEmail);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setForeground(new Color(46, 46, 46));
 		textField_1.setHorizontalAlignment(SwingConstants.LEFT);
 		textField_1.setColumns(16);
 		panel_1.add(textField_1);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_4.add(panel_2);
 		panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel_2.setBackground(Color.DARK_GRAY);
 		panel_2.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		
+
 		JLabel lblNumerTel = new JLabel("Numer tel.");
 		lblNumerTel.setForeground(Color.WHITE);
 		panel_2.add(lblNumerTel);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setForeground(new Color(46, 46, 46));
 		textField_2.setHorizontalAlignment(SwingConstants.LEFT);
 		textField_2.setColumns(16);
 		panel_2.add(textField_2);
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_4.add(panel_3);
 		panel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel_3.setBackground(Color.DARK_GRAY);
 		panel_3.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Zamówiony produkt:");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		panel_3.add(lblNewLabel_1);
-		
+
 		textField_3 = new JTextField();
 		textField_3.setForeground(new Color(46, 46, 46));
 		textField_3.setHorizontalAlignment(SwingConstants.LEFT);
 		textField_3.setColumns(16);
 		panel_3.add(textField_3);
 		btnZatwierdz.setText("Zatwierdź i dodaj");
-		
+
 		btnZatwierdz.setName("Zatwierdź i dodaj");
 		btnZatwierdz.setBackground(Color.GRAY);
 		btnZatwierdz.addActionListener(this);
-		
+
 		btnZapis.setText("Ustal ścieżkę zapisu");
 		btnZapis.setIcon(null);
 		btnZapis.setBackground(Color.LIGHT_GRAY);
@@ -162,27 +161,27 @@ public class window extends JFrame implements ActionListener {
 		panel_4.add(btnZapis);
 		panel_4.add(btnZatwierdz);
 		btnZatwierdz.setVisible(false);
-		
+
 		JLabel label = new JLabel("");
 		contentPane.add(label);
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		if (e.getSource()==btnZapis) {
+
+		if (e.getSource() == btnZapis) {
 			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			int returnVal = fileChooser.showSaveDialog(this);
-				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					fileFolder = fileChooser.getSelectedFile();
-					file = new File(fileFolder.getAbsolutePath()+"/Zamówienia.txt");
-					btnZatwierdz.setVisible(true);
-					btnZapis.setIcon(iconaccept);
-				}
-			
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				fileFolder = fileChooser.getSelectedFile();
+				file = new File(fileFolder.getAbsolutePath() + "/Zamówienia.txt");
+				btnZatwierdz.setVisible(true);
+				btnZapis.setIcon(iconaccept);
+			}
+
 		}
-		
-		if (e.getSource()==btnZatwierdz) {
+
+		if (e.getSource() == btnZatwierdz) {
 			textField.getText();
 			textField_1.getText();
 			textField_2.getText();
@@ -191,9 +190,10 @@ public class window extends JFrame implements ActionListener {
 			email = textField_1.getText();
 			phone = textField_2.getText();
 			orderedItem = textField_3.getText();
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");  
-			LocalDateTime now = LocalDateTime.now(); 
-			String order = "[ " + dtf.format(now) + " ] " + person + " | " + email + " | " + phone + " | " + orderedItem + "\n";
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
+			LocalDateTime now = LocalDateTime.now();
+			String order = "[ " + dtf.format(now) + " ] " + person + " | " + email + " | " + phone + " | " + orderedItem
+					+ "\n";
 			FileOutputStream fos = null;
 			try {
 				fos = new FileOutputStream(file, true);
@@ -202,26 +202,26 @@ public class window extends JFrame implements ActionListener {
 				}
 				byte[] orderInBytes = order.getBytes();
 				fos.write(orderInBytes);
-			}
-         catch (FileNotFoundException err) {
-            err.printStackTrace();
-        } catch (IOException err) {
-            err.printStackTrace();
-        } finally {
-        		try {
-        			if (fos != null) {
-                    fos.close();
-        			}
-        		} catch (IOException err) {
-        			err.printStackTrace();
-        			}
+			} catch (FileNotFoundException err) {
+				err.printStackTrace();
+			} catch (IOException err) {
+				err.printStackTrace();
+			} finally {
+				try {
+					if (fos != null) {
+						fos.close();
+					}
+				} catch (IOException err) {
+					err.printStackTrace();
+				}
 
 			}
 			textField.setText("");
 			textField_1.setText("");
 			textField_2.setText("");
 			textField_3.setText("");
+			//reorganized
 		}
-		
+
 	}
 }
