@@ -192,8 +192,9 @@ public class window extends JFrame implements ActionListener {
 			orderedItem = textField_3.getText();
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 			LocalDateTime now = LocalDateTime.now();
-			String order = "[ " + dtf.format(now) + " ] " + person + " | " + email + " | " + phone + " | " + orderedItem
-					+ "\n";
+			String order = 	"DATA: [ " + dtf.format(now) + " ] IMIĘ: " + person + 
+							" | EMAIL: " + email + " | TEL.: " + phone + " | PRODUKT: " + orderedItem
+							+ "\n";
 			FileOutputStream fos = null;
 			try {
 				fos = new FileOutputStream(file, true);
